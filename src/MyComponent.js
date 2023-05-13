@@ -103,40 +103,46 @@ class MyComponent extends React.Component {
     }
 
     handleSong() {
-        const body = document.body; // for changing backgrounds
-        this.setState((state) => {
-            return {
-                ...state,
-                songNo: (state.songNo + 1) % 3
+        if (this.state.power) {
+            const body = document.body; // for changing backgrounds
+            this.setState((state) => {
+                return {
+                    ...state,
+                    songNo: (state.songNo + 1) % 3
 
+                }
+            });
+            const songNo = document.querySelector('.songs');
+            if (this.state.songNo === 1) {
+                body.style.background = `url(${background3}) center/cover no-repeat`;
+                songNo.style.justifyContent = 'center';
+                this.setState((state) => {
+                    return {...state, display: 'Pasoori.mp3'}
+                })
+                this.songRef2.current.load();
+                this.songRef1.current.play();
+            } else if (this.state.songNo === 2) {
+                body.style.background = `url(${background2}) center/cover no-repeat`;
+                songNo.style.justifyContent = 'right';
+                this.setState((state) => {
+                    return {...state, display: 'PhliNazarM.mp3'}
+                })
+                this.songRef1.current.load();
+                this.songRef2.current.currentTime = 4;
+                this.songRef2.current.play();
+            } else {
+                body.style.background = `url(${background1}) center/cover no-repeat`;
+                songNo.style.justifyContent = 'left';
+                this.setState((state) => {
+                    return {...state, display: 'Songs Off'}
+                })
+                this.songRef1.current.load();
+                this.songRef2.current.load();
             }
-        });
-        const songNo = document.querySelector('.songs');
-        if (this.state.songNo === 1) {
-            body.style.background = `url(${background3}) center/cover no-repeat`;
-            songNo.style.justifyContent = 'center';
+        }else{
             this.setState((state) => {
-                return {...state, display: 'Pasoori.mp3'}
-            })
-            this.songRef2.current.load();
-            this.songRef1.current.play();
-        } else if (this.state.songNo === 2) {
-            body.style.background = `url(${background2}) center/cover no-repeat`;
-            songNo.style.justifyContent = 'right';
-            this.setState((state) => {
-                return {...state, display: 'PhliNazarM.mp3'}
-            })
-            this.songRef1.current.load();
-            this.songRef2.current.currentTime = 4;
-            this.songRef2.current.play();
-        } else {
-            body.style.background = `url(${background1}) center/cover no-repeat`;
-            songNo.style.justifyContent = 'left';
-            this.setState((state) => {
-                return {...state, display: 'Songs Off'}
-            })
-            this.songRef1.current.load();
-            this.songRef2.current.load();
+                return {...state, display: 'Turn On Power'}
+            });
         }
     }
 
