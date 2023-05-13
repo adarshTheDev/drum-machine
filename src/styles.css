@@ -1,0 +1,188 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+#root{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body{
+    background:url("./backgrounds/fuji.jpg") center/cover no-repeat;
+    transition: background-image 0.8s ease;
+}
+#drum-machine{
+    display: flex;
+    border: 2px solid rgba(33, 145, 98,0.3);
+    background-color: rgba(33, 145, 98, 0.2); /* Set the color of the thumb */
+}
+.drum-pad{
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgb(255, 172, 252 ,0.6);
+    margin: 10px;
+    background: rgb(9, 251, 218 ,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 550;
+    color: rgba(255, 172, 252 ,0.9 );
+    cursor: pointer;
+    transition: transform 0.2s;
+    border-radius: 2px;
+}
+.drum-pad:active{
+    background-color: rgba(175, 70, 129, 0.3);
+    color: rgba(218, 213, 213, 0.95);
+    transform: scale(0.95);
+}
+.active{
+    background-color: rgba(175, 70, 129, 0.3);
+    color: rgba(218, 213, 213, 0.95);
+    transform: scale(0.95);
+}
+.drum-btn{
+    padding-top: 25% ;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+#drum-keys{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap ;
+}
+#display{
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background: rgb(9, 251, 218 ,0.4);
+    color: rgba(6, 17, 13, 0.8);
+    font-weight: bold;
+    letter-spacing: 2px;
+
+}
+.on-btn{
+    width: 50px;
+    height: 25px;
+    border: 1px solid ghostwhite;
+    margin: 10px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 2px;
+    background-color: rgba(213, 213, 224, 0.45);
+    border-radius: 3px;
+}
+.on-btn-switch-on{
+    width: 50%;
+    height: 100%;
+    background-color: rgba(33, 145, 98, 0.9);
+}
+.songs{
+    width: 100px;
+    justify-content: left;
+}
+.song-switch{
+    width: 33.33%;
+    height: 100%;
+    background-color: rgba(33, 145, 98, 0.9);
+}
+.custom-range {
+    -webkit-appearance: none; /* Removes default styles */
+    background-color: rgba(33, 145, 98, 0.4); /* Set the background color of the track */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove outline */
+}
+
+.custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Removes default thumb styles */
+    width: 15px; /* Set the width of the thumb */
+    height: 15px; /* Set the height of the thumb */
+    background-color: rgba(33, 145, 98, 1); /* Set the color of the thumb */
+    border-radius: 50%; /* Rounded shape */
+}
+
+#drum-controls h3{
+    color : rgba(206, 252, 114, 0.6);
+    font-family: monospace;
+    font-size:22px ;
+}
+
+/*glowing text css*/
+.glow{
+    animation: glowing 2s infinite;
+}
+@keyframes glowing {
+    0% { text-shadow: 0 0 5px #fff; }
+    50% { text-shadow: 0 0 20px #00ff00; }
+    100% { text-shadow: 0 0 5px #fff; }
+}
+
+@media (max-width: 800px) {
+    #drum-machine{
+        max-width: 360px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #drum-keys{
+        max-width: 360px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .drum-pad{
+        width: 80px;
+        height: 80px;
+        font-size: 20px;
+    }
+    #display{
+        width: 200px;
+        height: 50px;
+        font-size: 15px;
+    }
+    .on-btn{
+        width: 50px;
+        height: 25px;
+        font-size: 15px;
+    }
+    #drum-controls{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #drum-controls h3{
+        font-size: 15px;
+    }
+    .songs{
+        width: 100px;
+        justify-content: left;
+    }
+    .custom-range::-webkit-slider-thumb {
+        width: 15px; /* Set the width of the thumb */
+        height: 15px; /* Set the height of the thumb */
+        background-color: rgba(33, 145, 98, 1); /* Set the color of the thumb */
+        border-radius: 50%; /* Rounded shape */
+    }
+
+
+
+}
